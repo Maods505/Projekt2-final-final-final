@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace projekuppgift_2
@@ -20,24 +20,21 @@ namespace projekuppgift_2
             {
 
                 Console.WriteLine("välj ett av följande alternativ");
-                Console.WriteLine("1. visa topplistan");
-                Console.WriteLine("2. ändra på topplistan");
+                Console.WriteLine("1. Visa topplistan");
+                Console.WriteLine("2. Ändra på hela topplistan");
                 Console.WriteLine("3. Ändra på en Låt i topplistan");
-                Console.WriteLine("4. söka efter ett låtnamn");
-                Console.WriteLine("5. avsluta programmet");
+                Console.WriteLine("4. Söka efter ett låtnamn");
+                Console.WriteLine("5. Avsluta programmet");
 
-                string användarensval = "";
-                användarensval = Console.ReadLine();
+                menyval = Console.ReadLine();
 
-
-
-                switch (användarensval)
+                switch (menyval)
                 {
                     case "1":
                         Console.WriteLine($"här är alla låtar som finns inskrivna ");
                         for (int i = 0; i < låtar.Length; i++)
                         {
-                            Console.WriteLine(låtar[i]);
+                            Console.WriteLine($"{i + 1}. {låtar[i]} ");
                         }
                         break;
 
@@ -66,14 +63,17 @@ namespace projekuppgift_2
                     case "4":
                         Console.WriteLine("Sök på ett ord från en låt.");
                         string Sök = Console.ReadLine();
+                        string söksmå = Sök.ToLower();
 
                         int Räknare = 0;
 
                         for (int i = 0; i < låtar.Length; i++)
                         {
-                            if (låtar[i].Contains(Sök))
+                            string låtsmå = låtar[i].ToLower();
+
+                            if (låtsmå.Contains(söksmå))
                             {
-                                Console.WriteLine($"{Sök} finns i låt nummer {i + 1}");
+                                Console.WriteLine($"{söksmå} finns i låt nummer {i + 1}");
 
                                 Räknare++;
                             }
@@ -88,8 +88,7 @@ namespace projekuppgift_2
 
                         break;
 
-                    case "5":
-                        Console.WriteLine("tryck på ctrl c");
+                    case "5":                    
                         break;
                 }
                 Console.WriteLine("");
